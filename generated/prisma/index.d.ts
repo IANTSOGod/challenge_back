@@ -905,6 +905,7 @@ export namespace Prisma {
     firstname: string | null
     lastname: string | null
     role: $Enums.Role | null
+    isEmailVerified: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -914,6 +915,7 @@ export namespace Prisma {
     firstname: string | null
     lastname: string | null
     role: $Enums.Role | null
+    isEmailVerified: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -923,6 +925,7 @@ export namespace Prisma {
     firstname: number
     lastname: number
     role: number
+    isEmailVerified: number
     _all: number
   }
 
@@ -942,6 +945,7 @@ export namespace Prisma {
     firstname?: true
     lastname?: true
     role?: true
+    isEmailVerified?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -951,6 +955,7 @@ export namespace Prisma {
     firstname?: true
     lastname?: true
     role?: true
+    isEmailVerified?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -960,6 +965,7 @@ export namespace Prisma {
     firstname?: true
     lastname?: true
     role?: true
+    isEmailVerified?: true
     _all?: true
   }
 
@@ -1056,6 +1062,7 @@ export namespace Prisma {
     firstname: string
     lastname: string
     role: $Enums.Role
+    isEmailVerified: boolean
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1084,6 +1091,7 @@ export namespace Prisma {
     firstname?: boolean
     lastname?: boolean
     role?: boolean
+    isEmailVerified?: boolean
   }, ExtArgs["result"]["user"]>
 
 
@@ -1095,9 +1103,10 @@ export namespace Prisma {
     firstname?: boolean
     lastname?: boolean
     role?: boolean
+    isEmailVerified?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstname" | "lastname" | "role", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstname" | "lastname" | "role" | "isEmailVerified", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -1109,6 +1118,7 @@ export namespace Prisma {
       firstname: string
       lastname: string
       role: $Enums.Role
+      isEmailVerified: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1484,6 +1494,7 @@ export namespace Prisma {
     readonly firstname: FieldRef<"User", 'String'>
     readonly lastname: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
+    readonly isEmailVerified: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -1825,7 +1836,8 @@ export namespace Prisma {
     password: 'password',
     firstname: 'firstname',
     lastname: 'lastname',
-    role: 'role'
+    role: 'role',
+    isEmailVerified: 'isEmailVerified'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1876,6 +1888,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -1895,6 +1914,7 @@ export namespace Prisma {
     firstname?: StringFilter<"User"> | string
     lastname?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
+    isEmailVerified?: BoolFilter<"User"> | boolean
   }
 
   export type UserOrderByWithRelationInput = {
@@ -1904,6 +1924,7 @@ export namespace Prisma {
     firstname?: SortOrder
     lastname?: SortOrder
     role?: SortOrder
+    isEmailVerified?: SortOrder
     _relevance?: UserOrderByRelevanceInput
   }
 
@@ -1917,6 +1938,7 @@ export namespace Prisma {
     firstname?: StringFilter<"User"> | string
     lastname?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
+    isEmailVerified?: BoolFilter<"User"> | boolean
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -1926,6 +1948,7 @@ export namespace Prisma {
     firstname?: SortOrder
     lastname?: SortOrder
     role?: SortOrder
+    isEmailVerified?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -1943,6 +1966,7 @@ export namespace Prisma {
     firstname?: StringWithAggregatesFilter<"User"> | string
     lastname?: StringWithAggregatesFilter<"User"> | string
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+    isEmailVerified?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type UserCreateInput = {
@@ -1951,6 +1975,7 @@ export namespace Prisma {
     firstname: string
     lastname: string
     role: $Enums.Role
+    isEmailVerified?: boolean
   }
 
   export type UserUncheckedCreateInput = {
@@ -1960,6 +1985,7 @@ export namespace Prisma {
     firstname: string
     lastname: string
     role: $Enums.Role
+    isEmailVerified?: boolean
   }
 
   export type UserUpdateInput = {
@@ -1968,6 +1994,7 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateInput = {
@@ -1977,6 +2004,7 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserCreateManyInput = {
@@ -1986,6 +2014,7 @@ export namespace Prisma {
     firstname: string
     lastname: string
     role: $Enums.Role
+    isEmailVerified?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
@@ -1994,6 +2023,7 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -2003,6 +2033,7 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2038,6 +2069,11 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type UserOrderByRelevanceInput = {
     fields: UserOrderByRelevanceFieldEnum | UserOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -2051,6 +2087,7 @@ export namespace Prisma {
     firstname?: SortOrder
     lastname?: SortOrder
     role?: SortOrder
+    isEmailVerified?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -2064,6 +2101,7 @@ export namespace Prisma {
     firstname?: SortOrder
     lastname?: SortOrder
     role?: SortOrder
+    isEmailVerified?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -2073,6 +2111,7 @@ export namespace Prisma {
     firstname?: SortOrder
     lastname?: SortOrder
     role?: SortOrder
+    isEmailVerified?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -2123,12 +2162,24 @@ export namespace Prisma {
     _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type EnumRoleFieldUpdateOperationsInput = {
     set?: $Enums.Role
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2170,6 +2221,11 @@ export namespace Prisma {
     in?: $Enums.Role[]
     notIn?: $Enums.Role[]
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2225,6 +2281,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleFilter<$PrismaModel>
     _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
 
