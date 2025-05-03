@@ -1,4 +1,8 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { compare, hash } from 'bcrypt';
 import { LoginDto } from 'src/dto/login.dto';
 import { UserCreateDto } from 'src/dto/userCreate.dto';
@@ -10,8 +14,9 @@ export class AuthentificationService {
 
   async createUser(data: UserCreateDto) {
     const { email, password, firstname, lastname } = data;
+
+    const hashedPassword = await hash(password, 12);
     try {
-      const hashedPassword = await hash(password, 12);
       const newUser = await this.prismaService.user.create({
         data: {
           email: email,
@@ -22,33 +27,28 @@ export class AuthentificationService {
         },
       });
       if (newUser) {
-        return newUser;
-      } else {
-        throw new HttpException({ message: 'Email non unique' }, 401);
+        return { message: 'User created' };
       }
-    } catch (error) {
-      throw new HttpException({ message: error }, 500);
+    } catch (e) {
+      console.log(e);
+      throw new UnauthorizedException('Email non unique');
     }
   }
 
   async login(data: LoginDto) {
     const { email, password } = data;
-    try {
-      const user = await this.prismaService.user.findUnique({
-        where: { email: email },
-      });
-      if (user) {
-        const isPasswordValid = await compare(password, user.password);
-        if (isPasswordValid) {
-          return user;
-        } else {
-          throw new HttpException({ message: 'Mot de passe incorrect' }, 401);
-        }
+    const user = await this.prismaService.user.findUnique({
+      where: { email: email },
+    });
+    if (user) {
+      const isPasswordValid = await compare(password, user.password);
+      if (isPasswordValid) {
+        return user;
       } else {
-        throw new HttpException({ message: 'Utilisateur non trouvé' }, 404);
+        throw new UnauthorizedException('Mot de passe invalide');
       }
-    } catch (error) {
-      throw new HttpException({ message: error }, 500);
+    } else {
+      throw new NotFoundException('User non trouvé');
     }
   }
 }
