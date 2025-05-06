@@ -130,6 +130,27 @@ exports.Prisma.UserScalarFieldEnum = {
   isEmailVerified: 'isEmailVerified'
 };
 
+exports.Prisma.ChallengeScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  xp: 'xp',
+  id_serie: 'id_serie',
+  id_creator: 'id_creator'
+};
+
+exports.Prisma.SerieScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  obtained_title: 'obtained_title',
+  id_theme: 'id_theme'
+};
+
+exports.Prisma.ThemeScalarFieldEnum = {
+  id: 'id',
+  label: 'label'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -141,13 +162,30 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   firstname: 'firstname',
   lastname: 'lastname'
 };
+
+exports.Prisma.ChallengeOrderByRelevanceFieldEnum = {
+  title: 'title',
+  description: 'description'
+};
+
+exports.Prisma.SerieOrderByRelevanceFieldEnum = {
+  title: 'title',
+  obtained_title: 'obtained_title'
+};
+
+exports.Prisma.ThemeOrderByRelevanceFieldEnum = {
+  label: 'label'
+};
 exports.Role = exports.$Enums.Role = {
   GAME_MAKER: 'GAME_MAKER',
   PLAYER: 'PLAYER'
 };
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Challenge: 'Challenge',
+  Serie: 'Serie',
+  Theme: 'Theme'
 };
 
 /**

@@ -20,11 +20,38 @@ enum Role {
 }
 
 model User {
-  id              Int     @id @default(autoincrement())
-  email           String  @unique
+  id              Int         @id @default(autoincrement())
+  email           String      @unique
   password        String
   firstname       String
   lastname        String
   role            Role
-  isEmailVerified Boolean @default(false)
+  isEmailVerified Boolean     @default(false)
+  Challenge       Challenge[] @relation("Has Creator")
+}
+
+model Challenge {
+  id          Int    @id @default(autoincrement())
+  title       String @unique
+  description String
+  xp          Int
+  id_serie    Int
+  id_creator  Int
+  Serie       Serie  @relation("Has Serie", fields: [id_serie], references: [id])
+  Creator     User   @relation("Has Creator", fields: [id_creator], references: [id])
+}
+
+model Serie {
+  id             Int         @id @default(autoincrement())
+  title          String      @unique
+  obtained_title String      @unique
+  id_theme       Int
+  ThemeRel       Theme       @relation("Has theme", fields: [id_theme], references: [id])
+  Challenge      Challenge[] @relation("Has Serie")
+}
+
+model Theme {
+  id    Int     @id @default(autoincrement())
+  label String  @unique
+  Serie Serie[] @relation("Has theme")
 }
